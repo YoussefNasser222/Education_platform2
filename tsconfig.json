@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+
+    "rootDir": "./src",
+    "outDir": "./dist",
+
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+
+    "removeComments": true,
+    "resolveJsonModule": true,
+
+    "strict": false,
+    "skipLibCheck": true,
+    "types": ["node"],
+
+    "noUncheckedIndexedAccess": false,
+    "isolatedModules": false,
+
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
+}
