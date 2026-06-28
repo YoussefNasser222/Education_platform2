@@ -1,15 +1,20 @@
 import { Schema } from "mongoose";
-import { IUser, Role } from "../../../utils";
+import { IUser, LEVEL, Role } from "../../../utils";
 
 const userSchema = new Schema<IUser>({
     fullName: { type: String, required: true },
-    email: { type: String },
+    userName: { type: String, required: true , unique: true},
     password: { type: String, required: true },
     role: {
         type: String,
         enum: Role,
         default: Role.STUDENT
     },
-    phoneNumber: { type: String },
+    phoneNumber: { type: String, required: true , unique: true},
+    level: {
+        type: String,
+        enum: LEVEL,
+        required: true
+    }
 })
 export default userSchema;

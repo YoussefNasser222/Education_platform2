@@ -1,15 +1,16 @@
-import { isPaid, Role } from "../../utils";
+import { isPaid, LEVEL, Role } from "../../utils";
 
 export interface RegisterDTO {
     fullName: string;
-    email: string;
+    userName: string;
     password: string;
-    phoneNumber?: string;
-    role : Role;
-    ispaid?: isPaid;
+    phoneNumber: string;
+    role? : Role;
+    isPaid?: isPaid;
+    level: LEVEL;
 }
 
 export interface LoginDto {
-    email: string;
+    userName: string;
     password: string; 
 }

@@ -24,6 +24,7 @@ function bootstrap(app, express) {
         }
     });
     app.use("/auth", limiter, modules_1.authRouter);
+    app.use("/user", modules_1.userRouter);
     app.use("/{*dummy}", (req, res, next) => {
         return res.status(400).json({ message: "invalid api", success: false });
     });

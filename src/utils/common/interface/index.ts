@@ -1,13 +1,15 @@
 import { ObjectId, Types } from "mongoose";
-import { isPaid, Role } from "../enums";
+import { isPaid, LEVEL, Role } from "../enums";
 
 export interface IUser {
+  _id? : Types.ObjectId
   fullName: string;
-  email: string;
-  phoneNumber?: string;
+  userName: string;
+  phoneNumber: string;
   password: string;
   role?: Role ;
   ispaid? : isPaid;
+  level : LEVEL;
 }
 export interface IToken {
   token : string ,

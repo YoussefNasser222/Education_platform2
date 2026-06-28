@@ -33,5 +33,8 @@ class AbstractRepository {
     async getAll(filter, projection, options, sort) {
         return await this.model.find(filter, projection, options).sort(sort);
     }
+    async findOneAndUpdate(filter, update, options) {
+        return await this.model.findOneAndUpdate(filter, update, options);
+    }
 }
 exports.AbstractRepository = AbstractRepository;

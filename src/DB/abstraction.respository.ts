@@ -60,4 +60,11 @@ export abstract class AbstractRepository<T> {
   ) {
     return await this.model.find(filter, projection, options).sort(sort);
   }
+  async findOneAndUpdate(
+    filter: QueryFilter<T>,
+    update: UpdateQuery<T>,
+    options?: MongooseUpdateQueryOptions,
+  ) {
+    return await this.model.findOneAndUpdate(filter, update, options);
+  }
 }

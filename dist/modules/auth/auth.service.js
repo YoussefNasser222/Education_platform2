@@ -9,17 +9,18 @@ class AuthService {
         this.tokenRepository = new DB_2.TokenRepository();
         this.register = async (req, res) => {
             const registerDto = req.body;
-            const userExist = await this.userRepository.exist({ email: registerDto.email });
+            const userExist = await this.userRepository.exist({ userName: registerDto.userName });
             if (userExist) {
                 throw new utils_1.ConflictException("user already exist");
             }
             const newUser = await this.userRepository.create({
                 fullName: registerDto.fullName,
-                email: registerDto.email,
+                userName: registerDto.userName,
                 password: await (0, utils_1.hashPassword)(registerDto.password),
                 role: registerDto.role ?? utils_1.Role.STUDENT,
-                ispaid: registerDto.ispaid ?? utils_1.isPaid.NO,
-                phoneNumber: registerDto.phoneNumber ?? "",
+                ispaid: registerDto.isPaid ?? utils_1.isPaid.NO,
+                phoneNumber: registerDto.phoneNumber,
+                level: registerDto.level
             });
             const { password, role, ispaid, ...other } = newUser.toObject();
             return res.status(201).json({
@@ -30,7 +31,7 @@ class AuthService {
         };
         this.login = async (req, res) => {
             const loginDto = req.body;
-            const userExist = await this.userRepository.exist({ email: loginDto.email });
+            const userExist = await this.userRepository.exist({ userName: loginDto.userName });
             if (!userExist) {
                 throw new utils_1.NotFoundException("user not found");
             }
@@ -53,6 +54,21 @@ class AuthService {
                 message: "user login successfully",
                 success: true,
                 data: { token }
+            });
+        };
+        this.logOut = async (req, res) => {
+            const token = req.headers.authorization;
+            if (!token) {
+                throw new utils_1.BadRequestException("Token is required");
+            }
+            const tokenExist = await this.tokenRepository.exist({ token });
+            if (!tokenExist) {
+                throw new utils_1.NotFoundException("token not found");
+            }
+            await this.tokenRepository.deleteOne({ token });
+            return res.status(200).json({
+                message: "user logout successfully",
+                success: true
             });
         };
     }
