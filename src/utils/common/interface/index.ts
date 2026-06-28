@@ -23,13 +23,13 @@ declare module "express" {
 }
 declare module "jsonwebtoken" {
   interface JwtPayload {
-    _id?: ObjectId;
+    _id?: string;
     role?: string;
   }
 }
 declare module "jsonwebtoken" {
   interface Payload {
-    _id?: ObjectId;
+    _id?: string;
     role?: string;
   }
 }
