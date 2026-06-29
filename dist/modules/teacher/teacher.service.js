@@ -87,11 +87,17 @@ class TeacherService {
             if (!studentExist) {
                 throw new utils_1.NotFoundException("Student not found");
             }
-            let paidUntil = new Date(Date.now());
+            let paidUntil;
+            if (studentExist.paidUntil &&
+                studentExist.paidUntil > new Date()) {
+                paidUntil = new Date(studentExist.paidUntil);
+            }
+            else {
+                paidUntil = new Date();
+            }
             paidUntil.setMonth(paidUntil.getMonth() + 1);
-            (0, node_console_1.log)(paidUntil);
             const updatedStudent = await this.userRepo.findOneAndUpdate({ _id: studentId }, {
-                isPaid: utils_1.isPaid.YES,
+                isPaid: utils_1.PAID.YES,
                 paidUntil
             }, {
                 new: true

@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { UserRepository } from "../../DB";
-import { hashPassword, isPaid, LEVEL, NotFoundException, Role } from "../../utils";
+import { hashPassword, PAID, LEVEL, NotFoundException, Role } from "../../utils";
 import { UpdateStudentDTO } from "./teacher.DTO";
 import { log } from "node:console";
 
@@ -81,40 +81,46 @@ class TeacherService {
             data: { students }
         });
     }
-        updatePaid = async (req: Request, res: Response) => {
-            const studentId = req.params.id;
+    updatePaid = async (req: Request, res: Response) => {
+        const studentId = req.params.id;
 
-            const studentExist = await this.userRepo.exist({
-                _id: studentId,
-                role: Role.STUDENT
-            });
+        const studentExist = await this.userRepo.exist({
+            _id: studentId,
+            role: Role.STUDENT
+        });
 
-            if (!studentExist) {
-                throw new NotFoundException("Student not found");
-            }
-            let paidUntil = new Date(Date.now());
-
-            // إضافة شهر
-            paidUntil.setMonth(paidUntil.getMonth() + 1);
-            log(paidUntil);
-            const updatedStudent =
-                await this.userRepo.findOneAndUpdate(
-                    { _id: studentId },
-                    {
-                        isPaid: isPaid.YES,
-                        paidUntil 
-                    },
-                    {
-                        new: true
-                    }
-                );
-
-            return res.status(200).json({
-                message: "Student payment updated successfully",
-                success: true,
-                data: { updatedStudent }
-            });
+        if (!studentExist) {
+            throw new NotFoundException("Student not found");
         }
+        let paidUntil: Date;
+
+        if (
+            studentExist.paidUntil &&
+            studentExist.paidUntil > new Date()
+        ) {
+            paidUntil = new Date(studentExist.paidUntil);
+        } else {
+            paidUntil = new Date();
+        }
+        paidUntil.setMonth(paidUntil.getMonth() + 1);
+        const updatedStudent =
+            await this.userRepo.findOneAndUpdate(
+                { _id: studentId },
+                {
+                    isPaid: PAID.YES,
+                    paidUntil
+                },
+                {
+                    new: true
+                }
+            );
+
+        return res.status(200).json({
+            message: "Student payment updated successfully",
+            success: true,
+            data: { updatedStudent }
+        });
+    }
 }
 
 

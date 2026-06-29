@@ -3,11 +3,10 @@ export enum Role {
     STUDENT = "student",
 }
 
-export enum isPaid {
+export enum PAID {
     YES = "yes",
     NO = "no"   
 }
-
 export enum LEVEL {
     one = "one",
     two = "two",
@@ -21,4 +20,14 @@ export enum LEVEL {
     ten = "ten",
     eleven = "eleven",
     twelve = "twelve"
+}
+export enum Choice{
+    A = "A",
+    B = "B",
+    C = "C",
+    D = "D"
+}
+export enum STATUS{
+    IN_PROGRESS = "in_progress",
+    COMPLETED = "completed"
 }

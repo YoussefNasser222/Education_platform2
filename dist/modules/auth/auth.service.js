@@ -17,7 +17,7 @@ class AuthService {
                 fullName: registerDto.fullName,
                 userName: registerDto.userName,
                 password: await (0, utils_1.hashPassword)(registerDto.password),
-                ispaid: registerDto.isPaid ?? utils_1.isPaid.NO,
+                ispaid: registerDto.isPaid ?? utils_1.PAID.NO,
                 phoneNumber: registerDto.phoneNumber,
                 level: registerDto.level
             });

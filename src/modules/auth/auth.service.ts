@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { UserRepository } from "../../DB";
 import { LoginDto, RegisterDTO } from "./auth.DTO";
-import { BadRequestException, comparePassword, ConflictException, hashPassword, isPaid, NotFoundException, Role, generateToken, LEVEL } from "../../utils";
+import { BadRequestException, comparePassword, ConflictException, hashPassword, PAID, NotFoundException, Role, generateToken, LEVEL } from "../../utils";
 import { TokenRepository } from "../../DB";
 import { ObjectId } from "mongoose";
 
@@ -19,7 +19,7 @@ class AuthService {
             fullName: registerDto.fullName,
             userName: registerDto.userName,
             password: await hashPassword(registerDto.password),
-            ispaid: registerDto.isPaid ?? isPaid.NO,
+            ispaid: registerDto.isPaid ?? PAID.NO,
             phoneNumber: registerDto.phoneNumber,
             level: registerDto.level
         })

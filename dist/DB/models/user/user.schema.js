@@ -19,8 +19,8 @@ const userSchema = new mongoose_1.Schema({
     },
     ispaid: {
         type: String,
-        enum: utils_1.isPaid,
-        default: utils_1.isPaid.NO
+        enum: utils_1.PAID,
+        default: utils_1.PAID.NO
     },
     paidUntil: {
         type: Date,
