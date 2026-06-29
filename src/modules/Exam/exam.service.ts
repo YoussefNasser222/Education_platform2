@@ -28,6 +28,7 @@ class ExamService {
     deleteExam = async (req: Request, res: Response) => {
         const examId = req.params.id;
         const exam = await this.examRepo.deleteOne({ _id: examId });
+        await this.QuestionRepo.deleteMany({ examId: examId});
         return res.status(200).json({
             message: "exam deleted successfully",
             success: true
@@ -60,6 +61,7 @@ class ExamService {
             question : questionDto.question,
             correctAnswer : questionDto.correctAnswer
         })
+        await this.examRepo.findOneAndUpdate({_id : examId} , {$push : {questions : question._id}})
         return res.status(201).json({
             message: "question added successfully",
             success: true,
