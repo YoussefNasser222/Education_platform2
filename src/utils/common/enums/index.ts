@@ -11,5 +11,14 @@ export enum isPaid {
 export enum LEVEL {
     one = "one",
     two = "two",
-    three = "three"
+    three = "three",
+    four = "four",
+    five = "five",
+    six = "six",
+    seven = "seven",
+    eight = "eight",
+    nine = "nine",
+    ten = "ten",
+    eleven = "eleven",
+    twelve = "twelve"
 }

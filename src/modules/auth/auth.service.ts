@@ -19,7 +19,6 @@ class AuthService {
             fullName: registerDto.fullName,
             userName: registerDto.userName,
             password: await hashPassword(registerDto.password),
-            role: registerDto.role ?? Role.STUDENT,
             ispaid: registerDto.isPaid ?? isPaid.NO,
             phoneNumber: registerDto.phoneNumber,
             level: registerDto.level

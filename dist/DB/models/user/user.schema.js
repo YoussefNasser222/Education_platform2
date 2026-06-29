@@ -16,6 +16,15 @@ const userSchema = new mongoose_1.Schema({
         type: String,
         enum: utils_1.LEVEL,
         required: true
+    },
+    ispaid: {
+        type: String,
+        enum: utils_1.isPaid,
+        default: utils_1.isPaid.NO
+    },
+    paidUntil: {
+        type: Date,
+        default: null
     }
 });
 exports.default = userSchema;

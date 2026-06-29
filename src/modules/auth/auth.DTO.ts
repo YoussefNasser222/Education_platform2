@@ -5,7 +5,6 @@ export interface RegisterDTO {
     userName: string;
     password: string;
     phoneNumber: string;
-    role? : Role;
     isPaid?: isPaid;
     level: LEVEL;
 }

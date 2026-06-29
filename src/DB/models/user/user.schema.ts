@@ -1,5 +1,5 @@
 import { Schema } from "mongoose";
-import { IUser, LEVEL, Role } from "../../../utils";
+import { isPaid, IUser, LEVEL, Role } from "../../../utils";
 
 const userSchema = new Schema<IUser>({
     fullName: { type: String, required: true },
@@ -15,6 +15,15 @@ const userSchema = new Schema<IUser>({
         type: String,
         enum: LEVEL,
         required: true
+    },
+    ispaid : {
+        type: String,
+        enum: isPaid,
+        default: isPaid.NO
+    },
+    paidUntil : {
+        type: Date,
+        default: null
     }
 })
 export default userSchema;

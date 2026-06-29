@@ -9,6 +9,7 @@ export interface IUser {
   password: string;
   role?: Role ;
   ispaid? : isPaid;
+  paidUntil? : Date;
   level : LEVEL;
 }
 export interface IToken {

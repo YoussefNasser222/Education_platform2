@@ -35,7 +35,7 @@ class UserService {
                 : userExist.password,
             level: userUpdate.level ?? userExist.level,
             phoneNumber: userUpdate.phoneNumber ?? userExist.phoneNumber
-        })
+        },{new : true})
         const {password , role , ...others} = userUpdated.toObject();
         return res.status(200).json({
             message: "User profile updated successfully",

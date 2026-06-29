@@ -1,6 +1,6 @@
 import { Express, NextFunction, Request, Response } from "express";
 import connectDB from "./DB/connection";
-import { authRouter, userRouter } from "./modules";
+import { authRouter, teacherRouter, userRouter } from "./modules";
 import { BadRequestException, errorHandler } from "./utils";
 import rateLimit, { Options } from "express-rate-limit";
 import cors from "cors";
@@ -23,7 +23,8 @@ export function bootstrap(app: Express, express: any) {
     app.use("/auth", limiter, authRouter);
     // user router
     app.use("/user", userRouter);
-
+    // admin router
+    app.use("/admin", teacherRouter);
     // handle invalid api
     app.use("/{*dummy}", (req: Request, res: Response, next: NextFunction) => {
         return res.status(400).json({ message: "invalid api", success: false });
