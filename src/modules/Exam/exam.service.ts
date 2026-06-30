@@ -37,7 +37,7 @@ class ExamService {
     }
     getExam = async (req: Request, res: Response) => {
         const examId = req.params.id;
-        const exam = await this.examRepo.exist({ _id: examId }, {}, {
+        const exam = await this.examRepo.exist({ _id: examId , isActive : true }, {}, {
             populate: [{
                 path: "teacherId",
                 select: "fullName"
