@@ -7,4 +7,5 @@ export const examSchema = new Schema<IExam>({
     teacherId : {type:Schema.Types.ObjectId,ref:"User",required:true},
     startAt : {type:Date,required:true},
     title : {type:String,required:true},
+    isActive:{type : Boolean,default : false}
 })

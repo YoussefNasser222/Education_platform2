@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.attemptSchema = void 0;
 const mongoose_1 = require("mongoose");
-const utils_1 = require("../../../utils");
 exports.attemptSchema = new mongoose_1.Schema({
     examId: {
         type: mongoose_1.Schema.Types.ObjectId,
@@ -22,7 +21,6 @@ exports.attemptSchema = new mongoose_1.Schema({
             },
             selectedAnswer: {
                 type: String,
-                enum: utils_1.Choice,
                 required: true
             }
         }],
@@ -34,13 +32,4 @@ exports.attemptSchema = new mongoose_1.Schema({
         type: Date,
         default: Date.now
     },
-    submittedAt: {
-        type: Date,
-        default: null
-    },
-    status: {
-        type: String,
-        enum: utils_1.STATUS,
-        default: utils_1.STATUS.IN_PROGRESS
-    }
 });

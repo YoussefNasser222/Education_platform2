@@ -5,6 +5,10 @@ const router = Router();
 
 router.post("/", isAuth, isAdmin, examService.createExam);
 router.delete("/:id", isAuth, isAdmin, examService.deleteExam)
-router.get("/:id", isAuth, isAdmin, examService.getExam)
+router.get("/:id", isAuth,examService.getExam)
+router.get("/result/:id", isAuth , isAdmin,examService.getAllResult)
 router.put("/questions/:id", isAuth, isAdmin, examService.addQuestions)
+router.put("/active/:id", isAuth, isAdmin, examService.avtiveExam)
+router.post("/solve/:id", isAuth, examService.solveExam)
+
 export default router

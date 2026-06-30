@@ -8,4 +8,5 @@ exports.examSchema = new mongoose_1.Schema({
     teacherId: { type: mongoose_1.Schema.Types.ObjectId, ref: "User", required: true },
     startAt: { type: Date, required: true },
     title: { type: String, required: true },
+    isActive: { type: Boolean, default: false }
 });

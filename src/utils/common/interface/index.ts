@@ -19,6 +19,7 @@ export interface IExam{
   questions : Types.ObjectId[]
   duration : number
   startAt : Date
+  isActive : boolean
 }
 export interface IQuestion{
   _id? : Types.ObjectId
@@ -33,12 +34,10 @@ export interface IAttempt{
   examId : Types.ObjectId
   answers : {
     questionId : Types.ObjectId
-    selectedAnswer : Choice
+    selectedAnswer : string
   }[]
   score : number
   startedAt:Date
-  submittedAt : Date
-  status : STATUS
 }
 export interface IToken {
   token : string ,

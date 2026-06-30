@@ -1,4 +1,4 @@
 import { model } from "mongoose";
-import { questionSchema } from "../question/question.schema";
+import { attemptSchema } from "./attempt.schema";
 
-export const Question = model("Question", questionSchema);
+export const Attempt = model("Attempt", attemptSchema);

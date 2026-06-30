@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Question = void 0;
+exports.Attempt = void 0;
 const mongoose_1 = require("mongoose");
-const question_schema_1 = require("../question/question.schema");
-exports.Question = (0, mongoose_1.model)("Question", question_schema_1.questionSchema);
+const attempt_schema_1 = require("./attempt.schema");
+exports.Attempt = (0, mongoose_1.model)("Attempt", attempt_schema_1.attemptSchema);

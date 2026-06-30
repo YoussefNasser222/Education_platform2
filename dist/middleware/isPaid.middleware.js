@@ -12,7 +12,7 @@ const isPaid = async (req, res, next) => {
     if (!user.paidUntil) {
         return next(new utils_1.BadRequestException("No active subscription"));
     }
-    if (user.paidUntil < new Date()) {
+    if (new Date(user.paidUntil) < new Date()) {
         await userRepo.findOneAndUpdate({ _id: user._id }, { ispaid: utils_1.PAID.NO, paidUntil: null }, { new: true });
         return next(new utils_1.BadRequestException("Subscription expired"));
     }

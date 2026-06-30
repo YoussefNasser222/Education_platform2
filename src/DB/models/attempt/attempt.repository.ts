@@ -1,9 +1,9 @@
-import { IQuestion } from "../../../utils";
+import { IAttempt, IQuestion } from "../../../utils";
 import { AbstractRepository } from "../../abstraction.respository";
-import { Question } from "./attempt.model";
+import { Attempt} from "./attempt.model";
 
-export class AttemptRepository extends AbstractRepository<IQuestion> {
+export class AttemptRepository extends AbstractRepository<IAttempt> {
     constructor() {
-        super(Question);
+        super(Attempt);
     }
 }
