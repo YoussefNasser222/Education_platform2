@@ -9,4 +9,4 @@ import { Choice, IQuestion } from "../../../utils";
         examId : {type : Schema.Types.ObjectId, ref : "Exam", required : true},
         correctAnswer : {type : String ,required : true},
         question : {type : String, required : true}
-    }) 
+    },{timestamps : true}) 

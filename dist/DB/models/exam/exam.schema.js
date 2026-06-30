@@ -9,4 +9,4 @@ exports.examSchema = new mongoose_1.Schema({
     startAt: { type: Date, required: true },
     title: { type: String, required: true },
     isActive: { type: Boolean, default: false }
-});
+}, { timestamps: true });

@@ -1,0 +1,10 @@
+import { Router } from "express";
+import { isAdmin, isAuth } from "../../middleware";
+import levelTimeService from "./levelTime.service";
+const router = Router();
+router.post("/",isAuth , isAdmin , levelTimeService.addLevelTime);
+router.patch("/:id",isAuth , isAdmin , levelTimeService.updateLevelTime);
+router.delete("/:id",isAuth , isAdmin , levelTimeService.deleteLeveTime);
+router.get("/:level",isAuth ,levelTimeService.getLevelTimeByLevel);
+router.get("/",isAuth ,isAdmin ,levelTimeService.getLevelTime);
+export default router;

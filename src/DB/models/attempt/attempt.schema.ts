@@ -31,4 +31,4 @@ export const attemptSchema = new Schema<IAttempt>({
       type: Date,
       default: Date.now
    },
-})
+},{timestamps : true})

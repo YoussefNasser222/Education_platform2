@@ -43,6 +43,11 @@ export interface IToken {
   token : string ,
   userId : Types.ObjectId
 }
+export interface ILevelTime{
+  _id? : Types.ObjectId
+  level : LEVEL
+  time : Date
+}
 declare module "express" {
   interface Request {
     user?: IUser;

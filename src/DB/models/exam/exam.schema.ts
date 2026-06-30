@@ -8,4 +8,4 @@ export const examSchema = new Schema<IExam>({
     startAt : {type:Date,required:true},
     title : {type:String,required:true},
     isActive:{type : Boolean,default : false}
-})
+},{timestamps : true})

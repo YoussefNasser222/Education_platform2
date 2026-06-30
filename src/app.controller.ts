@@ -1,6 +1,6 @@
 import { Express, NextFunction, Request, Response } from "express";
 import connectDB from "./DB/connection";
-import { authRouter, examRouter, teacherRouter, userRouter } from "./modules";
+import { authRouter, examRouter, levelTimeRouter, teacherRouter, userRouter } from "./modules";
 import { BadRequestException, errorHandler } from "./utils";
 import rateLimit, { Options } from "express-rate-limit";
 import cors from "cors";
@@ -27,6 +27,8 @@ export function bootstrap(app: Express, express: any) {
     app.use("/admin", teacherRouter);
     // exam router
     app.use("/exam", examRouter);
+    // levelTime router
+    app.use("/level-time", levelTimeRouter);
     // handle invalid api
     app.use("/{*dummy}", (req: Request, res: Response, next: NextFunction) => {
         return res.status(400).json({ message: "invalid api", success: false });

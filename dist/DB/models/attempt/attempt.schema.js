@@ -32,4 +32,4 @@ exports.attemptSchema = new mongoose_1.Schema({
         type: Date,
         default: Date.now
     },
-});
+}, { timestamps: true });

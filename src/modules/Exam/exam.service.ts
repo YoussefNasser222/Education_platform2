@@ -79,6 +79,9 @@ class ExamService {
         const examId = req.params.id;
         const { isActive } = req.body;
         const exam = await this.examRepo.findOneAndUpdate({ _id: examId }, { isActive }, { new: true });
+        if(!exam){
+            throw new NotFoundException("exam not found");
+        }
         return res.status(200).json({
             message: "exam activated or not activated successfully",
             success: true

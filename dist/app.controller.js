@@ -27,6 +27,7 @@ function bootstrap(app, express) {
     app.use("/user", modules_1.userRouter);
     app.use("/admin", modules_1.teacherRouter);
     app.use("/exam", modules_1.examRouter);
+    app.use("/level-time", modules_1.levelTimeRouter);
     app.use("/{*dummy}", (req, res, next) => {
         return res.status(400).json({ message: "invalid api", success: false });
     });
